@@ -3,12 +3,26 @@ version '1.0'
 
 apply plugin: 'java'
 
+ext {
+    jmonkeyengine_version = '[3.1,)'
+}
+
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile fileTree(dir: 'lib', include: ['*.jar'])
+    compile "org.jmonkeyengine:jme3-core:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-plugins:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-effects:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-networking:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-blender:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-bullet:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-bullet-native:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-lwjgl:$jmonkeyengine_version"
+    compile "org.jmonkeyengine:jme3-niftygui:$jmonkeyengine_version"
 }
