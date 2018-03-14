@@ -8,6 +8,7 @@ ext {
 }
 
 sourceCompatibility = 1.8
+sourceSets.main.java.srcDirs = [ "src/" ]
 
 repositories {
     mavenCentral()
@@ -15,6 +16,7 @@ repositories {
 }
 
 dependencies {
+    runtime project(':assets')
     compile fileTree(dir: 'lib', include: ['*.jar'])
     compile "org.jmonkeyengine:jme3-core:$jmonkeyengine_version"
     compile "org.jmonkeyengine:jme3-plugins:$jmonkeyengine_version"
@@ -25,4 +27,18 @@ dependencies {
     compile "org.jmonkeyengine:jme3-bullet-native:$jmonkeyengine_version"
     compile "org.jmonkeyengine:jme3-lwjgl:$jmonkeyengine_version"
     compile "org.jmonkeyengine:jme3-niftygui:$jmonkeyengine_version"
+}
+
+project(":assets") {
+    apply plugin: "java"
+
+    buildDir = rootProject.file("build/assets")
+
+    sourceSets {
+        main {
+            resources {
+                srcDir '.'
+            }
+        }
+    }
 }
